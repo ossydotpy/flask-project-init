@@ -6,7 +6,8 @@ bash script to initialize skeleton for flask projects
 
 
 2. installing
- add to bin folder to make it available globally
+
+add scripts to bin folder to make it available globally
 ```bash
 # Copy both scripts to /usr/local/bin
 sudo cp flask_init.sh starter_scripts.sh /usr/local/bin/
