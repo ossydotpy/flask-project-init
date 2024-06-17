@@ -2,7 +2,7 @@
 source starter_scripts.sh
 
 
-app_files=("__init__.py" "models.py" "routes.py" "forms.py")
+app_files=("__init__.py" "models.py" "db.py" "routes.py" "forms.py")
 static_folders=("css" "js" "img")
 
 
@@ -37,20 +37,27 @@ else
 	initpy "$app_path/__init__.py" "$app_name"
 	app_py "$base_dir/app.py" "$app_name"
 
-	echo "project structure created"
+	echo "project structure created. do you want to create a virtual environment? (Y/N)"
 
-	echo "creating virual environment"
-	cd "$base_dir"
+	read venv
+	if [[ "$venv" == "Y" || "$venv" == "y" ]]; then
 
-	if [ -d "venv" ]; then
-    		echo "A virtual environment already exists in this directory."
-		pip install Flask Flask-SQLAlchemy Flask-WTF
-		pip freeze>requirements.txt
-		exit 1
+		echo "creating virual environment"
+		cd "$base_dir"
+
+		if [ -d "venv" ]; then
+    			echo "A virtual environment already exists in this directory."
+			pip install Flask Flask-SQLAlchemy Flask-WTF
+			pip freeze>requirements.txt
+			exit 1
+		else
+			python -m venv venv
+			pip install Flask Flask-SQLAlchemy Flask-WTF
+        		pip freeze>requirements.txt
+		fi
 	else
-		python -m venv venv
-		pip install Flask Flask-SQLAlchemy Flask-WTF
-        	pip freeze>requirements.txt
+		echo "skipping virtual environment"
+		echo "done"
 	fi
 exit 1
 fi

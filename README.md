@@ -1,22 +1,19 @@
 # About
 bash script to initialize skeleton for flask projects
+includes automated python virtual environment setup 
+# prerequiistes
+- flask
+`pip install Flask`
 
 # install
-1. Git clone the repo
-
-
-2. installing
-
-add scripts to bin folder to make it available globally
+- download and extract the latest release
+- extract and run ./install.sh file
+# for nerds
+---
+- Clone the repo
+- move the flask_init.sh init starter_script.sh files to /usr/local/bin/
 ```bash
-# Copy both scripts to /usr/local/bin
 sudo cp flask_init.sh starter_scripts.sh /usr/local/bin/
-
-#make the init file excutable
-sudo chmod +x /usr/local/bin/flask_init.sh.sh
+# add executable permissions to the flask_init script
+# enjoy?
 ```
-
-3. usage
-```bash 
-flask_init path project_name```
-
